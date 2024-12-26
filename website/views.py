@@ -1,4 +1,5 @@
 from flask import Blueprint, render_template
+from flask_login import login_user, logout_user, login_required, current_user
 # we are going to define tha this file here is the Blueprint of our appplication which means that it has a bunch of routes and urls defined inside of it.
 #its a way to seperate our app out so we dont have to have all of our views defined in one file, we can have them in different files. split them up into different files. 
 
@@ -8,7 +9,8 @@ views = Blueprint('views', __name__)
 #this function will run whenever we go to the defined route
 
 @views.route('/')
+@login_required
 def home():
-    return render_template("home.html")
+    return render_template("home.html", user=current_user)
 
 #we have these blueprints registered, but we need to register these blueprints to the init.py file. we need to tell flask that we have a blueprint that we want to register.
