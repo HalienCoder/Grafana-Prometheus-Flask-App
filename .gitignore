@@ -1,66 +1,33 @@
-# Byte-compiled files
+# Python bytecode files
 *.pyc
 *.pyo
-*.pyd
 __pycache__/
 
-# Environment variables
-.env
-*.env
-
-# Virtual environment directories
+# Virtual environment
 venv/
 env/
-ENV/
 
-# Flask's SQLite database file
+# Flask application files
 *.db
+*.sqlite3
 
-# Instance folder
-instance/
+# IDE/editor folders and files
+.vscode/
+.idea/
 
-# Static files (if generated during runtime)
-static/
+# Environment variable files
+.env
 
 # Logs
 *.log
-*.out
-*.err
 
-# Test result files
-coverage.xml
-*.cover
-.hypothesis/
-
-# IDE or editor configurations
-.idea/
-.vscode/
-*.swp
-*.swo
-
-# Python egg cache
-*.egg-info/
-.eggs/
-
-# Build and distribution files
+# Build and distribution artifacts
 build/
 dist/
-*.egg
-*.wheel
+*.egg-info/
 
-# System files
+# MacOS specific files (if you're on Mac)
 .DS_Store
+
+# Windows specific files
 Thumbs.db
-desktop.ini
-
-# Pytest and coverage tools
-.pytest_cache/
-.coverage
-.cache/
-
-# Pipfile.lock (if you use Pipenv, and prefer only Pipfile for dependencies)
-Pipfile.lock
-
-# Temporary files
-*.bak
-*.tmp
