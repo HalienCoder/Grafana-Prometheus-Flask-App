@@ -2,14 +2,15 @@ from flask_login import LoginManager
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from os import path
+import os
 
 db= SQLAlchemy()
 DB_NAME = 'database.db'
 
 def create_app():
     app = Flask(__name__)
-    app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
-    app.config['SECRET_KEY'] = 'abkijajaoijsoakakalslslsl'
+    app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL', f'sqlite:///{DB_NAME}')
+    app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'default_secret_key')
 
     db.init_app(app)
 
