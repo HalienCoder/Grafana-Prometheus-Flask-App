@@ -123,7 +123,7 @@ You can access the following services:
 
 ---
 
-## Part 2: Monitoring with Prometheus & Grafana
+## Monitoring with Prometheus & Grafana
 
 ### 📊 6. Running the App with Docker
 
