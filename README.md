@@ -171,7 +171,3 @@ After you’ve run the `start.sh` script and everything is up, follow these step
 - Save the dashboard by clicking the **disk icon** in the top-right corner and providing a name (e.g., “Flask App Monitoring”).
 
 Now, you should see the Flask app metrics being scraped and displayed in Grafana!
-
----
-
-That’s the end of the documentation! You've successfully containerized your Flask app with Prometheus and Grafana, allowing you to monitor and visualize application performance. Feel free to tweak the metrics and dashboard further!
