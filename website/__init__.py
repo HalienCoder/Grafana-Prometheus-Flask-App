@@ -3,6 +3,9 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from os import path
 import os
+from prometheus_client import Counter, Summary, generate_latest
+from flask import Response, request
+import time
 
 db= SQLAlchemy()
 DB_NAME = 'database.db'
@@ -40,6 +43,24 @@ def create_app():
     def load_user(id):
         return User.query.get(int(id))
     
+    REQUEST_COUNT = Counter("app_requests_total", "Total number of requests", ['method', 'endpoint'])
+    REQUEST_LATENCY = Summary("app_request_latency_seconds", "Request latency in seconds", ['endpoint'])
+
+    @app.before_request
+    def before_request():
+        request.start_time = time.time()
+
+    @app.after_request
+    def after_request(response):
+        if request.path != '/metrics':
+            resp_time = time.time() - request.start_time
+            REQUEST_LATENCY.labels(endpoint=request.path).observe(resp_time)
+            REQUEST_COUNT.labels(method=request.method, endpoint=request.path).inc()
+        return response
+
+    @app.route('/metrics')
+    def metrics():
+        return Response(generate_latest(), mimetype='text/plain')
 
     return app
 

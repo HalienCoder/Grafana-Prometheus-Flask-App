@@ -1,0 +1,7 @@
+global:
+  scrape_interval: 5s  # how often to scrape metrics
+
+scrape_configs:
+  - job_name: 'flask-notes-app'
+    static_configs:
+      - targets: ['172.18.0.2:5000']
